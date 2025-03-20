@@ -14,8 +14,10 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: apt install python3 pipenv -y
-        run: pipenv install fastapi uvicorn pytest requests
+        run: |
+          sudo apt update
+          sudo apt install -y python3 pipenv
+          pipenv install fastapi uvicorn pytest requests
 
       - name: Start FastAPI server
         run: pipenv run python3 apiserver.py &
