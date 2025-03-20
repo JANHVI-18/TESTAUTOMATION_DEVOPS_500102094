@@ -20,12 +20,13 @@ jobs:
           pipenv install fastapi uvicorn pytest requests
 
       - name: Start FastAPI server
-        run: pipenv run python3 apiserver.py &
+        run: |
+          pipenv run python3 apiserver.py &
         env:
           PYTHONUNBUFFERED: 1
 
       - name: Wait for server to be ready
-        run: sleep 5  # Wait to ensure the server is up
+        run: sleep 5  # Ensure the server is up before running tests
 
       - name: Run tests
         run: pipenv run pytest automation_test_pytest.py
