@@ -1,3 +1,6 @@
+
+
+
 # Backend API Test Automation with FastAPI and Requests
 
 In this tutorial, we'll cover how to automate backend API testing using **FastAPI** for the server and **Requests** for testing. The following steps will be covered:
@@ -20,10 +23,11 @@ If you haven't already, install FastAPI and Uvicorn:
 
 ```bash
 pip install fastapi uvicorn
-apiserver.py
-python
-Copy
-Edit
+```
+
+### `apiserver.py`
+
+```python
 from fastapi import FastAPI
 
 # Initialize the FastAPI app
@@ -65,28 +69,33 @@ def multiply(num1: int, num2: int):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("apiserver:app", host="0.0.0.0", port=8000, reload=True)
-2. Running the Server 🔥
+```
+
+---
+
+## 2. Running the Server 🔥
+
 To run the server, use the following command:
 
-bash
-Copy
-Edit
+```bash
 uvicorn apiserver:app --reload
-Your FastAPI server should now be running at http://localhost:8000. You can test the endpoints by visiting:
+```
 
-http://localhost:8000/add/2/3
+Your FastAPI server should now be running at `http://localhost:8000`. You can test the endpoints by visiting:
 
-http://localhost:8000/subtract/5/3
+- `http://localhost:8000/add/2/3`
+- `http://localhost:8000/subtract/5/3`
+- `http://localhost:8000/multiply/2/3`
 
-http://localhost:8000/multiply/2/3
+---
 
-3. Writing Automated Tests using Requests 🧪
-We will use the Requests library to automate the testing of our API endpoints.
+## 3. Writing Automated Tests using Requests 🧪
 
-testAutomation.py
-python
-Copy
-Edit
+We will use the **Requests** library to automate the testing of our API endpoints.
+
+### `testAutomation.py`
+
+```python
 import requests
 
 # Define test cases for the API endpoints
@@ -130,13 +139,17 @@ def test():
 
 # Run the test function
 test()
-4. Enhancing Tests with Pytest 🔧
-For more powerful and readable test automation, we can enhance the tests with Pytest.
+```
 
-test_automation.py with Pytest
-python
-Copy
-Edit
+---
+
+## 4. Enhancing Tests with Pytest 🔧
+
+For more powerful and readable test automation, we can enhance the tests with **Pytest**.
+
+### `test_automation.py` with Pytest
+
+```python
 import pytest
 import requests
 
@@ -158,30 +171,36 @@ def test_api(url, expected, description):
     result = response.json()["result"]
     print(f"{description}. Expected {expected}, got {result}")
     assert result == expected, f"{description}. Expected {expected}, got {result}"
-Run the tests using Pytest:
+```
 
-bash
-Copy
-Edit
+Run the tests using **Pytest**:
+
+```bash
 pytest test_automation.py
-5. Expanding the Idea for Real-World Projects 🌍
-1. Add Database Integration 💾
-Instead of simple arithmetic, imagine an API that fetches/stores data in a PostgreSQL or MongoDB database. Testing would involve:
+```
 
-Checking data integrity after each API call.
+---
 
-Mocking database connections for isolated testing.
+## 5. Expanding the Idea for Real-World Projects 🌍
 
-2. Authentication and Authorization 🔒
-Add OAuth2, JWT, or API keys for secure endpoints. Test unauthorized access to ensure security.
+### 1. Add Database Integration 💾
 
-3. CI/CD Integration 🛠️
-Use GitHub Actions / Jenkins to automate testing on each code push.
+Instead of simple arithmetic, imagine an API that fetches/stores data in a **PostgreSQL** or **MongoDB** database. Testing would involve:
 
-Example GitHub Action for Pytest
-yaml
-Copy
-Edit
+- **Checking data integrity** after each API call.
+- **Mocking database connections** for isolated testing.
+
+### 2. Authentication and Authorization 🔒
+
+Add **OAuth2, JWT, or API keys** for secure endpoints. Test unauthorized access to ensure security.
+
+### 3. CI/CD Integration 🛠️
+
+Use **GitHub Actions / Jenkins** to automate testing on each code push.
+
+#### Example GitHub Action for Pytest
+
+```yaml
 name: API Tests
 on: [push, pull_request]
 
@@ -210,33 +229,24 @@ jobs:
 
       - name: Run tests
         run: pytest test_automation.py
-4. Advanced Error Handling & Logging 📝
-Use Python's logging module to track API requests and responses. Store logs in CloudWatch or Elastic Stack.
+```
 
-5. Performance & Load Testing 🚅
-Use pytest-benchmark or locust.io to simulate high-traffic conditions and ensure your API performs well under load.
+### 4. Advanced Error Handling & Logging 📝
 
-Final Thoughts 💡
+Use Python's `logging` module to track API requests and responses. Store logs in **CloudWatch** or **Elastic Stack**.
+
+### 5. Performance & Load Testing 🚅
+
+Use **`pytest-benchmark`** or **`locust.io`** to simulate high-traffic conditions and ensure your API performs well under load.
+
+---
+
+## Final Thoughts 💡
+
 In this tutorial, we:
 
-Built a FastAPI server with three endpoints.
-
-Wrote automated tests using requests.
-
-Improved testing with pytest.
-
-Discussed expanding to real-world applications.
-
-With these techniques, you can build a solid, automated testing foundation for your API projects. Happy coding! 🎉
-
-pgsql
-Copy
-Edit
-
-This README provides a detailed explanation of the project setup, usage, testing, and potential improvements. It also incorporates emojis to make it more visually engaging and easier to follow!
-
-
-
-
-
+- Built a **FastAPI server** with three endpoints.
+- Wrote **automated tests** using `requests`.
+- Improved testing with **pytest**.
+- Discussed **expanding to real-world applications**.
 
